@@ -117,3 +117,142 @@ console.log(arr_obj[4][0]); //undefined
 console.log(arr_obj[4][1]); //1
 console.log(arr_obj[4][2]); //2
 console.log(arr_obj[4][3]); //3
+
+/////////////////////////////////////function
+
+//파라매타 자료형 안써줘도 됨
+//함수의 반환값은 변수자료형처럼 모든 자료형인듯
+function sayHello(input1, input2) {
+  //띄어쓰기를 따로 명시해줘야 함
+  //hello bye 15
+  console.log("hello" + " " + input1 + " " + input2);
+
+  //띄어쓰기를 따로 명시 안해줘도 ,가 띄어쓰기 생성해줌
+  //hello bye 15
+  console.log("hello", input1, input2);
+
+  //스트링 사이사이 띄어쓰기를 생성해줌
+  //hello bye hello 15
+  console.log(`hello ${input1} hello ${input2}`);
+
+  return `my name is ${input1}`;
+}
+
+sayHello("bye", 15);
+
+const greetHyoil = sayHello("hyoil", 28);
+
+console.log(greetHyoil);
+
+// -> object에 변수가 아닌 함수를 넣으면 class처럼 동작
+
+const calculator = {
+  plus: function (a, b) {
+    return a + b;
+  },
+  sub: function (a, b) {
+    return a - b;
+  },
+  mul: function (a, b) {
+    return a * b;
+  },
+  div: function (a, b) {
+    return a / b;
+  },
+  mod: function (a, b) {
+    return a % b;
+  },
+};
+
+console.log(calculator.plus(5, 5));
+console.log(calculator.sub(5, 5));
+console.log(calculator.mul(5, 5));
+console.log(calculator.div(5, 5));
+console.log(calculator.mod(7, 5));
+
+//////////////////////////////////////////// - > html + javaScript
+//DOM = Document Object Module
+//event sourse -> https://developer.mozilla.org/ko/docs/Web/Events
+const title = document.querySelector("#title");
+
+console.log(title);
+
+title.innerHTML = "hyo il";
+
+console.dir(title);
+
+title.style.color = "red";
+title.style.display = "flex";
+title.style.justifyContent = "center";
+
+console.dir(document);
+
+document.title = "hyoil";
+
+function handleResize() {
+  console.log("I have been resized");
+}
+
+//title : red -> blue / blue -> red
+function handleClick() {
+  if (title.style.color == "red") {
+    title.style.color = "blue";
+  } else {
+    title.style.color = "red";
+  }
+}
+
+function handleMouseEnter() {
+  if (title.textContent == "hyo il") {
+    title.innerHTML = "mouseEnter";
+  } else {
+    title.innerHTML = "hyo il";
+  }
+}
+
+//window크기가 변경되면 handleResize함수를 작동시켜라
+//but handleResize()라고 하면 처음부터 실행이되고
+//handleReize라고하면 이벤트 발생시에만 실행이됨.
+window.addEventListener("resize", handleResize);
+
+title.addEventListener("click", handleClick);
+
+title.addEventListener("mouseenter", handleMouseEnter);
+
+// -> if else
+
+const num = 0;
+
+if (num == 1) {
+  console.log("num == 1");
+} else if (num > 1) {
+  console.log("num > 1");
+} else {
+  console.log("num < 1");
+}
+
+/////////////////////////////////////////// seperate html css javascript
+
+const title = document.querySelector("#title");
+
+const CLICKED_CLASS = "clicked";
+
+function handleClick() {
+  // const flag = title.classList.contains(CLICKED_CLASS);
+
+  // if (flag == false) {
+  //   title.classList.add(CLICKED_CLASS);
+  // } else {
+  //   title.classList.remove(CLICKED_CLASS);
+  // }
+
+  // ==
+
+  title.classList.toggle(CLICKED_CLASS);
+}
+
+function init() {
+  title.addEventListener("click", handleClick);
+}
+
+init();
